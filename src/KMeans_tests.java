@@ -36,6 +36,7 @@ public class KMeans_tests {
         		centroides[i][j] = entrada.nextInt();
         	}
         }
+        System.out.println("\n\nCentróides");
         imprimeMatriz(centroides);
         x.calculo(centroides);
         x.dumpAll();
