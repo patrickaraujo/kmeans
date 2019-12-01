@@ -72,9 +72,10 @@ public class Kmeans {
 	public void calculo(float centroides[][]) {
 		novo = new ArrayList<NovaData>();
 		float dist[] = new float[centroides.length];
-		float novoCentroide[] = new float[centroides[0].length];
+		
 		
 		for (Data a: dados) {
+			float novoCentroide[] = new float[centroides[0].length];
 			float var[] = a.getVar();
 			
 			for (int i = 0; i < centroides.length; i++) {
