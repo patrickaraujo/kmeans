@@ -13,7 +13,7 @@ public class KMeans_tests {
                 if((j+1) == m[0].length)
                 	System.out.println(m[i][j]+"]");
                 else
-                	System.out.print(m[i][j]+", ");
+                	System.out.print(m[i][j]+"; ");
             }
         }  
 
@@ -23,10 +23,12 @@ public class KMeans_tests {
 		// TODO Auto-generated method stub
 		Kmeans x = new Kmeans("iris.data");
 		        
-        System.out.println("Qual a quantidade de centróides?\nDigite 0 para sair");
+        System.out.print("Digite 0 para sair\nQual a quantidade de centróides?\nk = ");
         Scanner entrada = new Scanner(System.in);
         int qtd = entrada.nextInt();
+        System.out.println();
         float centroides[][] = new float[qtd][4];
+        
         
         for(int i = 0; i < qtd; i++) {
         	for(int j = 0; j < 4; j++) {
@@ -35,6 +37,8 @@ public class KMeans_tests {
         	}
         }
         imprimeMatriz(centroides);
+        x.calculo(centroides);
+        x.dumpAll();
         
         System.out.println("O processo chegou ao FIM.");
 	}
