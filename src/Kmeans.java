@@ -17,9 +17,12 @@ import java.util.Iterator;
  */
 public class Kmeans {
 	private ArrayList <Data> dados;
+	/*
 	private ArrayList <Data> iris_setosa;
 	private ArrayList <Data> iris_versicolor;
 	private ArrayList <Data> iris_virginica;
+	*/
+	private int qtd;
 	ArrayList <NovaData> novo;
 	
 	public Kmeans() {
@@ -31,9 +34,13 @@ public class Kmeans {
 		
 		int i = 0;
         
-		while (entrada.readLine() != null)
-            i++;
-		System.out.println("Ok!");
+		String loop = entrada.readLine();
+		qtd = (loop.split(",")).length;
+		
+		while (loop != null) {
+			loop = entrada.readLine();
+			i++;
+		}
 		transfer(file);
 		entrada.close();
 	}
@@ -42,30 +49,32 @@ public class Kmeans {
 		BufferedReader entrada = new BufferedReader(new FileReader(file));
 		String linha = entrada.readLine();
 		dados = new ArrayList<Data>();
+		/*
 		iris_setosa = new ArrayList<Data>();
 		iris_versicolor = new ArrayList<Data>();
 		iris_virginica = new ArrayList<Data>();
-		
+		*/
 		while (linha != null) {
 			String vetorStr[] = linha.split(",");
-			float var[] = new float[vetorStr.length-1];
-			if(vetorStr.length == 5) {
+			float var[] = new float[qtd-1];
+			if(vetorStr.length == qtd) {
 
 				for(int i = 0; i < ((vetorStr.length)-1); i++)
 					var[i] = Float.parseFloat(vetorStr[i]);
 
-				String classe = vetorStr[4];
+				String classe = vetorStr[qtd-1];
 				dados.add(new Data(var, classe));
+				/*
 				if(classe.equals("Iris-setosa"))
 					iris_setosa.add(new Data(var, classe));
 				else if(classe.equals("Iris-versicolor"))
 					iris_versicolor.add(new Data(var, classe));
 				else if(classe.equals("Iris-virginica"))
 					iris_virginica.add(new Data(var, classe));
+				*/
 			}
 			linha = entrada.readLine();
 		}
-		
 		entrada.close();
 	}
 	
@@ -111,6 +120,11 @@ public class Kmeans {
         w.close();
     }
 	
+	public int getQtd() {
+		return qtd;
+	}
+
+
 	public static int indexOfSmallest(float[] array){
 
 	    // add this
